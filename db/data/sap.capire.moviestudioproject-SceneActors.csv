@@ -1,0 +1,5 @@
+ID,movie_ID,scene_ID,actor_ID,characterName,createdAt,createdBy,modifiedAt,modifiedBy
+1,1,2,2,'Harry Potter'
+2,1,3,3,'Hermione'
+3,2,1,2,'Harry Potter'
+4,2,1,3,'Hermione'

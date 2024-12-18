@@ -1,0 +1,3 @@
+ID,name,type,modelNumber,quantity,createdAt,createdBy,modifiedAt,modifiedBy
+100,camera,cameras,111,25
+101,light,lights,141,5
