@@ -1,5 +1,5 @@
 ID,genre,createdAt,createdBy,modifiedAt,modifiedBy
-1,Fiction
-2,Science
-3,Drama
-4,Thriller
+1e982dd6-a2db-4329-8a50-4cad58a6b9ee,Fiction
+1b972f39-35a9-4751-87f8-890beb394ac9,Science
+7cfb39ea-6b1b-412f-b8a0-4cea138abae2,Drama
+2ade98bc-a5d4-4f7c-829b-1c5080be98c2,Thriller

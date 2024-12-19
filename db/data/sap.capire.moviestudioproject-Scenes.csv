@@ -1,6 +1,6 @@
 ID,movie_ID,description,duration,location,status_ID,createdAt,createdBy,modifiedAt,modifiedBy
-1,1,'First scene description',25,"[{""country"":""DE"",""address"":""BERLIN""}, {""country"":""FR"",""address"":"" Paris""}]",1
-2,1,'Second scene description',55,"[{""country"":""US"",""address"":"" Los Angeles""}, {""country"":""FR"",""address"":"" Paris""}]",2
-3,2,'scene description',50,"[{""country"":""US"",""address"":""Los Angeles""}, {""country"":""FR"",""address"":"" Paris""}]",3
-4,2,'scene description',40,"[{""country"":""US"",""address"":""Los Angeles""}, {""country"":""FR"",""address"":"" Paris""}]",2
-5,2,'scene description',37,"[{""country"":""US"",""address"":""Los Angeles""}, {""country"":""FR"",""address"":"" Paris""}]",2
+0400e2e3-a6e2-423d-b819-78ec99837b42,1,'First scene description',25,"[{""country"":""DE"",""address"":""BERLIN""}, {""country"":""FR"",""address"":"" Paris""}]",1
+86d7b71c-b930-475d-8825-3f217e77f1e2,1,'Second scene description',55,"[{""country"":""US"",""address"":"" Los Angeles""}, {""country"":""FR"",""address"":"" Paris""}]",2
+bb90a1c6-9682-4d21-a1da-7afdacb8974e,2,'scene description',50,"[{""country"":""US"",""address"":""Los Angeles""}, {""country"":""FR"",""address"":"" Paris""}]",3
+ccd0b710-79c2-46c4-bfc9-eb189111537e,2,'scene description',40,"[{""country"":""US"",""address"":""Los Angeles""}, {""country"":""FR"",""address"":"" Paris""}]",2
+a774647b-8877-43fb-819d-515947119499,2,'scene description',37,"[{""country"":""US"",""address"":""Los Angeles""}, {""country"":""FR"",""address"":"" Paris""}]",2

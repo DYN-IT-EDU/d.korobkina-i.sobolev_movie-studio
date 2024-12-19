@@ -1,0 +1,36 @@
+@baseUrl = http://localhost:4004
+
+GET {{baseUrl}}/equipment/$metadata
+
+###
+GET {{baseUrl}}/equipment/Equipment
+###
+GET {{baseUrl}}/equipment/EquipmentOrders?$expand=*
+###
+GET {{baseUrl}}/equipment/showLowStock
+###
+POST {{baseUrl}}/equipment/OrderEquipment
+Content-Type: application/json
+
+{
+    "item": "c7b79b3d-f806-46b4-bb97-bb85dd0683a0",
+    "order": 1
+}
+
+###
+POST {{baseUrl}}/equipment/OrderEquipment
+Content-Type: application/json
+
+{
+    "item": "c7b79b3d-f806-46b4-bb97-bb85dd0683a0",
+    "order": 10000000000
+}
+
+###
+POST {{baseUrl}}/equipment/OrderEquipment
+Content-Type: application/json
+
+{
+    "item": "c7b79b3d-f806-46b4-bb97-bb85dd0683a0",
+    "order": 0
+}
