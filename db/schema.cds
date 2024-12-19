@@ -4,7 +4,8 @@ using {
     cuid,
     managed,
     sap.common.CodeList,
-    Country
+    Country,
+    Currency,
 } from '@sap/cds/common';
 
 entity People : cuid, managed {
@@ -21,13 +22,12 @@ entity Movies : cuid, managed {
     title       : String(255);
     releaseDate : Date;
     duration    : Integer;
-    budget      : Decimal(15, 2);
+    budget      : MonetaryValue;
     synopsis    : String;
     scenes      : Composition of many Scenes
                       on scenes.movie = $self;
     genres      : Association to many MovieGenres
                       on genres.movie = $self;
-
 }
 
 entity Scenes : cuid, managed {
@@ -36,6 +36,7 @@ entity Scenes : cuid, managed {
     duration    : Integer;
     location    : SceneLocations;
     status      : Association to SceneStatuses  @mandatory  @assert.range;
+    expenses    : Composition of many Expenses on expenses.scene = $self;
 }
 
 entity SceneActors : cuid, managed {
@@ -45,10 +46,11 @@ entity SceneActors : cuid, managed {
     characterName : String;
 }
 
-entity MoviePeople : cuid, managed {
+entity Contracts : cuid, managed {
     movie   : Association to Movies;
     person  : Association to People;
     role    : Association to Roles;
+    salary  : MonetaryValue;
     details : String;
 }
 
@@ -116,10 +118,27 @@ entity OrderStatuses : CodeList {
     key ID : Integer
 }
 
+entity Expenses : cuid, managed {
+    scene    : Association to Scenes @mandatory;
+    category : Association to ExpenseCategories;
+    expense  : MonetaryValue;
+    description : String;
+    expenseDate: Date;
+}
+
+entity ExpenseCategories : cuid, managed {
+    name        : String @mandatory;
+    description : String;
+}
 
 type SceneLocation {
     country : Country;
     address : String;
+}
+
+type MonetaryValue {
+    amount : Decimal(15, 2);
+    currency : Currency;
 }
 
 type SceneLocations : many SceneLocation;

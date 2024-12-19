@@ -2,6 +2,6 @@ using sap.capire.moviestudioproject as db from '../db/schema';
 
 service Movies @(path: '/movies') {
     entity Movies          as projection on db.Movies;
-    entity MoviePeople     as projection on db.MoviePeople;
+    entity Contracts     as projection on db.Contracts;
     entity MovieProgress   as projection on db.MovieProgress;
 }
