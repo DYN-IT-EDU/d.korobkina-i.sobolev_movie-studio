@@ -1,9 +1,9 @@
 ID,name,type,modelNumber,quantity,createdAt,createdBy,modifiedAt,modifiedBy
-c7b79b3d-f806-46b4-bb97-bb85dd0683a0,camera,cameras,111,25
-7b57de17-ae19-4eb9-a555-13fa4a037008,light,lights,141,5
-5ca2dd3b-f5cb-4256-a22a-1e7e5fbd6069,Big light,lights,145,1
-89b3ae65-9c10-4bf1-bac2-ad25ea3cbb37,small lens,lenses,205,500
-c1d360ef-4453-4e22-acd5-12913e072241,big lens,lenses,220,8
-002e2c2c-c44d-4692-a05d-792e0af0a58b,gold microphone,microphones,301,4
-6ac6f723-a963-4b80-a35a-7496c8a1b655,silver microphone,microphones, 302,25
-4ee15c7c-85d2-48c2-b32f-a675a9ba176c,just dummy microphone,microphones,303,100
+c7b79b3d-f806-46b4-bb97-bb85dd0683a0,camera,cameras,111,25,"2024-12-22T05:51:49.036Z","anonymous","2024-12-22T05:51:49.036Z","anonymous"
+7b57de17-ae19-4eb9-a555-13fa4a037008,light,lights,141,5,"2024-12-22T05:51:49.036Z","anonymous","2024-12-22T05:51:49.036Z","anonymous"
+5ca2dd3b-f5cb-4256-a22a-1e7e5fbd6069,Big light,lights,145,1,"2024-12-22T05:51:49.036Z","anonymous","2024-12-22T05:51:49.036Z","anonymous"
+89b3ae65-9c10-4bf1-bac2-ad25ea3cbb37,small lens,lenses,205,500,"2024-12-22T05:51:49.036Z","anonymous","2024-12-22T05:51:49.036Z","anonymous"
+c1d360ef-4453-4e22-acd5-12913e072241,big lens,lenses,220,8,"2024-12-22T05:51:49.036Z","anonymous","2024-12-22T05:51:49.036Z","anonymous"
+002e2c2c-c44d-4692-a05d-792e0af0a58b,gold microphone,microphones,301,4,"2024-12-22T05:51:49.036Z","anonymous","2024-12-22T05:51:49.036Z","anonymous"
+6ac6f723-a963-4b80-a35a-7496c8a1b655,silver microphone,microphones, 302,25,"2024-12-22T05:51:49.036Z","anonymous","2024-12-22T05:51:49.036Z","anonymous"
+4ee15c7c-85d2-48c2-b32f-a675a9ba176c,just dummy microphone,microphones,303,100,"2024-12-22T05:51:49.036Z","anonymous","2024-12-22T05:51:49.036Z","anonymous"

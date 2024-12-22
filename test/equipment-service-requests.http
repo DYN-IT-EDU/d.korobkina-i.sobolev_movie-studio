@@ -2,19 +2,23 @@
 
 GET {{baseUrl}}/equipment/$metadata
 
-###
+### -- тут сработает хендлер на чтение - если меньше 20 - то тревожимся о закупке
 GET {{baseUrl}}/equipment/Equipment
 ###
-GET {{baseUrl}}/equipment/EquipmentOrders?$expand=*
+GET {{baseUrl}}/equipment/EquipmentOrders
 ###
+GET {{baseUrl}}/equipment/EquipmentOrders
+###
+GET {{baseUrl}}/equipment/EquipmentOrderItem
+### - функция - проверяем если  запасов меньше 10 - ручная проверка
 GET {{baseUrl}}/equipment/showLowStock
 ###
 POST {{baseUrl}}/equipment/OrderEquipment
 Content-Type: application/json
 
 {
-    "item": "c7b79b3d-f806-46b4-bb97-bb85dd0683a0",
-    "order": 1
+    "items": [{"quantity": 5, "item" : "c7b79b3d-f806-46b4-bb97-bb85dd0683a0"}, {"quantity": 2, "item" : "7b57de17-ae19-4eb9-a555-13fa4a037008"}],   
+    "scene" : "0400e2e3-a6e2-423d-b819-78ec99837b42"
 }
 
 ###
@@ -22,15 +26,41 @@ POST {{baseUrl}}/equipment/OrderEquipment
 Content-Type: application/json
 
 {
-    "item": "c7b79b3d-f806-46b4-bb97-bb85dd0683a0",
-    "order": 10000000000
+    "items": [{"quantity": 50000, "item" : "c7b79b3d-f806-46b4-bb97-bb85dd0683a0"}, {"quantity": 2, "item" : "7b57de17-ae19-4eb9-a555-13fa4a037008"}],   
+    "scene" : "0400e2e3-a6e2-423d-b819-78ec99837b42"
 }
+
 
 ###
 POST {{baseUrl}}/equipment/OrderEquipment
 Content-Type: application/json
 
 {
-    "item": "c7b79b3d-f806-46b4-bb97-bb85dd0683a0",
-    "order": 0
+    "items": [{"quantity": 0, "item" : "c7b79b3d-f806-46b4-bb97-bb85dd0683a0"}, {"quantity": 2, "item" : "7b57de17-ae19-4eb9-a555-13fa4a037008"}],   
+    "scene" : "0400e2e3-a6e2-423d-b819-78ec99837b42"
+}
+
+### - CLOSE ORDER TEST - first - ok, second - already finished
+GET {{baseUrl}}/equipment/EquipmentOrders
+###
+# @name getEquipmentOrderID
+GET   {{baseUrl}}/equipment/EquipmentOrders(e0001b67-338e-4304-bdf5-4f15d5d33cde)
+
+###
+
+@orderID = {{getEquipmentOrderID.response.body.$.ID}}
+
+### - just for reference - 102 means "finished"
+GET {{baseUrl}}/equipment/OrderStatuses(102)
+###
+
+
+
+### - дважды нажатие - вызовет ошибку - заказ уже закрыт
+PATCH   {{baseUrl}}/equipment/EquipmentOrders({{orderID}})
+Content-Type: application/json
+
+{  
+     "status":   {"ID":"102"}
+
 }
