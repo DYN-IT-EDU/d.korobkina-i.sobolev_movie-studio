@@ -2,10 +2,24 @@ using sap.capire.moviestudioproject as db from '../db/schema';
 
 service EquipmentService @(path: '/equipment') {
     @readonly
-    entity Equipment          as projection on db.Equipment;
+    entity Equipment                            as projection on db.Equipment;
 
-    entity EquipmentOrders    as projection on db.EquipmentOrders;
-    entity EquipmentOrderItem as projection on db.EquipmentOrderItem;
+    entity EquipmentOrders                      as
+        select from db.EquipmentOrders {
+            ID,
+            scene,
+            status,
+            date,
+            items
+        };
+
+    entity EquipmentOrderItem                   as projection on db.EquipmentOrderItem;
+
+    entity MoviesViewWithParameter(p1 : String) as
+        select from db.Movies
+        where
+            ID = :p1;
+
     function showLowStock()                                               returns array of Equipment;
     action   CloseOrder(order : db.EquipmentOrders:ID)                    returns String;
 

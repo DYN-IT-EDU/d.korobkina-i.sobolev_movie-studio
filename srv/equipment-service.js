@@ -1,8 +1,9 @@
 const cds = require("@sap/cds");
-const { t } = require("@sap/cds/lib/utils/tar");
+
 class EquipmentService extends cds.ApplicationService {
   init() {
-    const { Equipment, EquipmentOrders } = this.entities;
+    const { Equipment, EquipmentOrders, MoviesViewWithParameter } =
+      this.entities;
 
     this.before("UPDATE", EquipmentOrders, this.checkOrderStatus);
     this.after("READ", Equipment, this.checkStock);
@@ -14,9 +15,9 @@ class EquipmentService extends cds.ApplicationService {
 
   async showLowStock() {
     const { Equipment } = this.entities;
-    const b = await SELECT.from(Equipment).where({ quantity: { "<=": 10 } });
-
-    return b;
+    const expr = SELECT.from(Equipment).where({ quantity: { "<=": 10 } });
+    const res = await cds.run(expr);
+    return res;
   }
 
   async checkStock(data) {
