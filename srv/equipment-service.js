@@ -10,6 +10,17 @@ class EquipmentService extends cds.ApplicationService {
     this.on("showLowStock", this.showLowStock);
     this.on("OrderEquipment", this.placeOrder);
     this.on("CloseOrder", this.closeOrder);
+    this.on("sleep", async () => {
+      try {
+        let dbQuery = 'Call "sleep"()';
+        let result = await cds.run(dbQuery, {});
+        cds.log().info(result);
+        return true;
+      } catch (err) {
+        cds.log.error(err);
+        return false;
+      }
+    });
     return super.init();
   }
 

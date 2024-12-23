@@ -20,6 +20,7 @@ service EquipmentService @(path: '/equipment') {
         where
             ID = :p1;
 
+    function sleep()                                                      returns Boolean;
     function showLowStock()                                               returns array of Equipment;
     action   CloseOrder(order : db.EquipmentOrders:ID)                    returns String;
 
