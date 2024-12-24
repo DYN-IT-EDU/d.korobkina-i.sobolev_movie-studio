@@ -1,4 +1,4 @@
 ID,name,descr
-1,'In progress','Scene under production',
-2,'Finished','Scene is Finished',
-3,'Rejected','Scene is rejected',
+1,'In progress','Scene under production'
+2,'Finished','Scene is Finished'
+3,'Rejected','Scene is rejected'

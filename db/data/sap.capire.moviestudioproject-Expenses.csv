@@ -1,0 +1,9 @@
+ID,scene_ID,category_ID,expense_amount,expense_currency_code,description,expenseDate,createdAt,createdBy,modifiedAt,modifiedBy
+7f8e1c4a-5d3a-4e3e-b68c-9fa3a3e84701,0400e2e3-a6e2-423d-b819-78ec99837b42,34a8e126-5e2f-4093-ad42-e628865ef01b,12000.00,USD,"Rental of cameras and lighting equipment for Scene 1",2024-12-01,2024-12-23,user1,2024-12-23,user1
+9e2c4b4d-6e5a-4c1a-9b7f-2b0c4e1a8470,0400e2e3-a6e2-423d-b819-78ec99837b42,1b92d34e-8883-4728-8583-d82696d477bb,5000.00,USD,"Purchase of props for Scene 1",2024-12-02,2024-12-23,user1,2024-12-23,user1
+4c7d9f3a-2d1c-4b3e-8b6a-7c1e4b3a9470,0400e2e3-a6e2-423d-b819-78ec99837b42,8f08b5af-bf69-450a-8a42-28f3d6ff24ab,15000.00,USD,"Renting the filming location for Scene 1",2024-12-03,2024-12-23,user1,2024-12-23,user1
+3f6e8d2b-9c5a-4d3e-8b7f-1e0d3f3a8470,86d7b71c-b930-475d-8825-3f217e77f1e2,7fae6e07-dd93-4a1e-8c22-3e0be00e567c,8000.00,USD,"Marketing and promotions for Scene 2",2024-12-04,2024-12-23,user1,2024-12-23,user1
+2e4d7c9a-5e1a-4f3e-9b6a-7b2e3c3a8470,86d7b71c-b930-475d-8825-3f217e77f1e2,103631e7-2673-445d-a227-3a7c37217903,10000.00,USD,"Post-production editing for Scene 2",2024-12-05,2024-12-23,user1,2024-12-23,user1
+1f8e9d3b-6e5a-4d3e-9b7f-3b2c4f3a9470,bb90a1c6-9682-4d21-a1da-7afdacb8974e,34a8e126-5e2f-4093-ad42-e628865ef01b,11000.00,EUR,"Rental of cameras and lighting equipment for Scene 3",2024-12-06,2024-12-23,user1,2024-12-23,user1
+5d9c7e3a-2c1a-4b3e-9b6a-3e1d4c3a8470,bb90a1c6-9682-4d21-a1da-7afdacb8974e,1b92d34e-8883-4728-8583-d82696d477bb,4000.00,EUR,"Purchase of props for Scene 3",2024-12-07,2024-12-23,user1,2024-12-23,user1
+6e3d8f2a-9c5a-4d3e-8b7f-1d2e4f3a9470,ccd0b710-79c2-46c4-bfc9-eb189111537e,8f08b5af-bf69-450a-8a42-28f3d6ff24ab,20000.00,EUR,"Renting the filming location for Scene 4",2024-12-08,2024-12-23,user1,2024-12-23,user1

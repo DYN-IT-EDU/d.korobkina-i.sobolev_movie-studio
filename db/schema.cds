@@ -54,7 +54,7 @@ entity Contracts : cuid, managed {
     details : String;
 }
 
-entity MovieProgress as
+entity MovieProgresses as
     select from Movies
     left join Scenes
         on Movies.ID = Scenes.movie.ID
@@ -69,7 +69,9 @@ entity MovieProgress as
     where
         Scenes.status.ID = 2
     group by
-        Movies.ID;
+        Movies.ID,
+        title,
+        Movies.duration;
 
 
 entity Equipment : cuid, managed {

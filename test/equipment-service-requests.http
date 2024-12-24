@@ -1,0 +1,69 @@
+@baseUrl = http://localhost:4004
+
+GET {{baseUrl}}/equipment/$metadata
+
+### -- тут сработает хендлер на чтение - если меньше 20 - то тревожимся о закупке - вставляем в имя напоминалку
+GET {{baseUrl}}/equipment/Equipment
+###
+GET {{baseUrl}}/equipment/EquipmentOrders
+###
+GET {{baseUrl}}/equipment/EquipmentOrderItem
+### - функция - проверяем где  запасов меньше 10 - ручная проверка низкого запаса на складе
+GET {{baseUrl}}/equipment/showLowStock
+###
+POST {{baseUrl}}/equipment/OrderEquipment
+Content-Type: application/json
+
+{
+    "items": [{"quantity": 5, "item" : "c7b79b3d-f806-46b4-bb97-bb85dd0683a0"}, {"quantity": 2, "item" : "7b57de17-ae19-4eb9-a555-13fa4a037008"}],   
+    "scene" : "0400e2e3-a6e2-423d-b819-78ec99837b42"
+}
+
+### - здесь делаем заведомо большой заказ - проверяем есть ли столько на складе
+POST {{baseUrl}}/equipment/OrderEquipment
+Content-Type: application/json
+
+{
+    "items": [{"quantity": 50000, "item" : "c7b79b3d-f806-46b4-bb97-bb85dd0683a0"}, {"quantity": 2, "item" : "7b57de17-ae19-4eb9-a555-13fa4a037008"}],   
+    "scene" : "0400e2e3-a6e2-423d-b819-78ec99837b42"
+}
+
+
+### - здесь 0 заказываем и проверяем заказ
+POST {{baseUrl}}/equipment/OrderEquipment
+Content-Type: application/json
+
+{
+    "items": [{"quantity": 0, "item" : "c7b79b3d-f806-46b4-bb97-bb85dd0683a0"}, {"quantity": 2, "item" : "7b57de17-ae19-4eb9-a555-13fa4a037008"}],   
+    "scene" : "0400e2e3-a6e2-423d-b819-78ec99837b42"
+}
+
+### - Закрываем заказ - т.е. переводим в разряд - закрыт - если еще раз нажать - скажет, что уже закрыт заказ
+GET {{baseUrl}}/equipment/EquipmentOrders
+###
+# @name getEquipmentOrderID
+GET   {{baseUrl}}/equipment/EquipmentOrders(e0001b67-338e-4304-bdf5-4f15d5d33cde)
+
+###
+
+@orderID = {{getEquipmentOrderID.response.body.$.ID}}
+
+
+### - дважды нажатие - вызовет ошибку - заказ уже закрыт
+PATCH   {{baseUrl}}/equipment/EquipmentOrders({{orderID}})
+Content-Type: application/json
+
+{  
+     "status":   {"ID":"102"}
+
+}
+
+###  - вызов представления с параметрами
+GET {{baseUrl}}/equipment/MoviesViewWithParameter(p1='35ceb633-50f4-44ed-9af9-d97b63885f1d')/Set
+
+### - вывод прогресса по фильму - в плане суммы времени сцен и плановой продолжительности фильма
+### Если сцена имеет статус отклонено или снимается - то не учитываем.
+GET {{baseUrl}}/movies/MovieProgress
+
+### - вызов функции sleep - которая вызывает процедуру sleep
+GET {{baseUrl}}/equipment/sleep()

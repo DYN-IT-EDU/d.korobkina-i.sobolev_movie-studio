@@ -1,3 +1,5 @@
-ID,name,description,createdAt,createdBy,modifiedAt,modifiedBy
-1,Director,'Movie Director'
-2,Actor,'Movie Actor'
+ID,createdAt,createdBy,modifiedAt,modifiedBy,name,description
+1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d,2024-01-01,admin,2024-01-01,admin,Actor,Performs in the movie as a character.
+2b3c4d5e-6f7a-8b9c-0d1e-2f3a4b5c6d7e,2024-01-02,admin,2024-01-02,admin,Director,Oversees the creative aspects of the movie.
+3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f,2024-01-03,admin,2024-01-03,admin,Producer,Manages production and financing.
+8b9c0d1e-2f3a-4b5c-6d7e-8f9g0h1i2j3k,2024-01-08,admin,2024-01-08,admin,Costume Designer,Designs costumes for the characters.

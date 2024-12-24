@@ -1,4 +1,4 @@
 ID,name,descr
-1,'Ordered'
-2,'In use'
-3,'Returned to store'
+100,'Ordered','Ordered'
+101,'In use','In use'
+102,'FINISHED - Returned to store','FINISHED - Returned to store'

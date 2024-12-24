@@ -1,0 +1,30 @@
+@baseUrl = http://localhost:4004
+
+
+GET {{baseUrl}}/movies/calculateTotalExpenses(movieID='123e4567-e89b-12d3-a456-426614174000')
+
+###
+# 35ceb633-50f4-44ed-9af9-d97b63885f1d
+GET {{baseUrl}}/movies/$metadata
+
+###
+GET {{baseUrl}}/movies/calculateTotalExpenses?movieID=35ceb633-50f4-44ed-9af9-d97b63885f1d
+
+###
+GET {{baseUrl}}/movies/Movies
+###
+GET {{baseUrl}}/movies/calculateTotalExpenses(movieID='35ceb633-50f4-44ed-9af9-d97b63885f1d')
+
+###
+GET {{baseUrl}}/movies/calculateTotalExpenses?movieID=35ceb633-50f4-44ed-9af9-d97b63885f1d
+
+###
+GET {{baseUrl}}/movies/calculateTotalExpenses?movieID=433d723c-bb76-4ae6-98a2-b107981686f3
+
+###
+GET {{baseUrl}}/scenes/calculateScenesExpenses(movieID='35ceb633-50f4-44ed-9af9-d97b63885f1d')
+###
+GET {{baseUrl}}/scenes/calculateScenesExpenses?movieID=35ceb633-50f4-44ed-9af9-d97b63885f1d
+
+###
+GET {{baseUrl}}/movies/calculateTotalExpenses   

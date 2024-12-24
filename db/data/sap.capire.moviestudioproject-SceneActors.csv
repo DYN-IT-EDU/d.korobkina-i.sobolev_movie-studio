@@ -1,5 +1,5 @@
 ID,movie_ID,scene_ID,actor_ID,characterName,createdAt,createdBy,modifiedAt,modifiedBy
-1,1,2,2,'Harry Potter'
-2,1,3,3,'Hermione'
-3,2,1,2,'Harry Potter'
-4,2,1,3,'Hermione'
+39981f33-27a3-42e4-932d-1f88d17f1ecf,35ceb633-50f4-44ed-9af9-d97b63885f1d,0400e2e3-a6e2-423d-b819-78ec99837b42,9adb3520-ce93-4739-9e81-a021552b0ffc,'Harry Potter',"2024-12-22T05:51:49.036Z","anonymous","2024-12-22T05:51:49.036Z","anonymous"
+a59ccfe4-453d-4535-8eed-328bd4e4fc89,35ceb633-50f4-44ed-9af9-d97b63885f1d,86d7b71c-b930-475d-8825-3f217e77f1e2,786dd564-946b-4df5-82e4-49f170afcc1e,'Hermione',"2024-12-22T05:51:49.036Z","anonymous","2024-12-22T05:51:49.036Z","anonymous"
+51140fe7-4b7f-4187-b0ca-d5c7bcbadd08,433d723c-bb76-4ae6-98a2-b107981686f3,bb90a1c6-9682-4d21-a1da-7afdacb8974e,9adb3520-ce93-4739-9e81-a021552b0ffc,'Harry Potter',"2024-12-22T05:51:49.036Z","anonymous","2024-12-22T05:51:49.036Z","anonymous"
+46c085c2-22ce-4479-9a23-ce1c9b13ed21,433d723c-bb76-4ae6-98a2-b107981686f3,ccd0b710-79c2-46c4-bfc9-eb1891115371,786dd564-946b-4df5-82e4-49f170afcc1e,'Hermione',"2024-12-22T05:51:49.036Z","anonymous","2024-12-22T05:51:49.036Z","anonymous"
