@@ -4,6 +4,6 @@ PROCEDURE "sleep" ( )
    READS SQL DATA AS
 BEGIN USING SQLSCRIPT_SYNC as SyncLib;
 
-call SyncLib:SLEEP_SECONDS(10);
+call SyncLib :SLEEP_SECONDS(10);
 
 END

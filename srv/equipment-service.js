@@ -1,5 +1,5 @@
 const cds = require("@sap/cds");
-
+const LOG = cds.log("equipment-service");
 class EquipmentService extends cds.ApplicationService {
   init() {
     const { Equipment, EquipmentOrders, MoviesViewWithParameter } =
@@ -14,10 +14,10 @@ class EquipmentService extends cds.ApplicationService {
       try {
         let dbQuery = 'Call "sleep"()';
         let result = await cds.run(dbQuery, {});
-        cds.log().info(result);
+        LOG.info("result", result);
         return true;
       } catch (err) {
-        cds.log.error(err);
+        LOG.error(err);
         return false;
       }
     });

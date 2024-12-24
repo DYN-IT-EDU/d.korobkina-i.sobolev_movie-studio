@@ -35,7 +35,7 @@ entity Scenes : cuid, managed {
     description : String;
     duration    : Integer;
     location    : SceneLocations;
-    status      : Association to SceneStatuses  @mandatory  @assert.range;
+    status      : SceneStatuses  @mandatory  @assert.range;
     expenses    : Composition of many Expenses
                       on expenses.scene = $self;
 }
@@ -55,7 +55,7 @@ entity Contracts : cuid, managed {
     details : String;
 }
 
-entity MovieProgresses as
+entity MovieProgress as
     select from Movies
     left join Scenes
         on Movies.ID = Scenes.movie.ID
@@ -68,7 +68,7 @@ entity MovieProgresses as
         )               as Actual_duration
     }
     where
-        Scenes.status.ID = 2
+        Scenes.status = 'finished'
     group by
         Movies.ID,
         title,
@@ -114,8 +114,16 @@ entity MovieGenres : cuid, managed {
 
 }
 
-entity SceneStatuses : CodeList {
+/*entity SceneStatuses : CodeList {
     key ID : Integer
+}**/
+type SceneStatuses  : String enum {
+
+    in_progress;
+    finished;
+    rejected;
+
+
 }
 
 entity OrderStatuses : CodeList {

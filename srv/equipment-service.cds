@@ -14,6 +14,7 @@ service EquipmentService @(path: '/equipment') {
         };
 
     entity EquipmentOrderItem                   as projection on db.EquipmentOrderItem;
+    entity MovieProgress                        as projection on db.MovieProgress;
 
     entity MoviesViewWithParameter(p1 : String) as
         select from db.Movies
