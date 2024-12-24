@@ -33,8 +33,3 @@ type items : {
     quantity : Integer;
     item     : db.Equipment:ID;
 }
-
-type items : {
-    quantity : Integer;
-    item     : db.Equipment:ID;
-}
