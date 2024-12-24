@@ -36,7 +36,8 @@ entity Scenes : cuid, managed {
     duration    : Integer;
     location    : SceneLocations;
     status      : Association to SceneStatuses  @mandatory  @assert.range;
-    expenses    : Composition of many Expenses on expenses.scene = $self;
+    expenses    : Composition of many Expenses
+                      on expenses.scene = $self;
 }
 
 entity SceneActors : cuid, managed {
@@ -81,6 +82,7 @@ entity Equipment : cuid, managed {
     quantity    : Integer;
 }
 
+
 entity EquipmentOrders : cuid, managed {
     scene  : Association to Scenes;
     status : Association to OrderStatuses;
@@ -121,11 +123,11 @@ entity OrderStatuses : CodeList {
 }
 
 entity Expenses : cuid, managed {
-    scene    : Association to Scenes @mandatory;
-    category : Association to ExpenseCategories;
-    expense  : MonetaryValue;
+    scene       : Association to Scenes @mandatory;
+    category    : Association to ExpenseCategories;
+    expense     : MonetaryValue;
     description : String;
-    expenseDate: Date;
+    expenseDate : Date;
 }
 
 entity ExpenseCategories : cuid, managed {
@@ -139,7 +141,7 @@ type SceneLocation {
 }
 
 type MonetaryValue {
-    amount : Decimal(15, 2);
+    amount   : Decimal(15, 2);
     currency : Currency;
 }
 

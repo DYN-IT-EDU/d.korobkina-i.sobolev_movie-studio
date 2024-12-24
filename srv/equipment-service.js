@@ -40,7 +40,6 @@ class EquipmentService extends cds.ApplicationService {
   }
 
   async placeOrder(req) {
-    console.log(req);
     const {
       Equipment,
       EquipmentOrders,
