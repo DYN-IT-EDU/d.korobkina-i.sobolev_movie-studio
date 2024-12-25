@@ -1,4 +1,5 @@
-@baseUrl = http://localhost:4004
+###@baseUrl = http://localhost:4004
+@baseUrl = https://incidents-cf-org-dev-movie-studio-srv.cfapps.us10-001.hana.ondemand.com
 
 GET {{baseUrl}}/equipment/$metadata
 

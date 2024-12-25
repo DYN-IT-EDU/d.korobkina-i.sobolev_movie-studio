@@ -35,4 +35,4 @@ type items : {
     item     : db.Equipment:ID;
 }
 
-annotate EquipmentService with @(requires: 'movies-support');
+//annotate EquipmentService with @(requires: 'any');

@@ -24,31 +24,13 @@
       "native_hana_associations": false
     },
     "requires": {
-      "[development]": {
-        "auth": {
-          "kind": "mocked",
-          "users": {
-            "movies.support@tester.sap.com": {
-              "password": "initial",
-              "roles": [
-                "movies-support"
-              ]
-            },
-            "alice": {
-              "roles": [
-                "movies-support"
-              ]
-            },
-            "bob": {
-              "roles": [
-                "movies-support"
-              ]
-            }
-          }
-        }
-      },
+      "[development]": {},
       "[hybrid]": {
         "db": "hana"
+      },
+      "[production]": {
+        "db": "hana",
+        "auth": "mocked"
       }
     }
   }
