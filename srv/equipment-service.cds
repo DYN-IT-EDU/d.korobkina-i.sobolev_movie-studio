@@ -14,7 +14,7 @@ service EquipmentService @(path: '/equipment') {
         };
 
     entity EquipmentOrderItem                   as projection on db.EquipmentOrderItem;
-    entity MovieProgress                        as projection on db.MovieProgress;
+    entity MovieProgresses                      as projection on db.MovieProgresses;
 
     entity MoviesViewWithParameter(p1 : String) as
         select from db.Movies
@@ -34,3 +34,5 @@ type items : {
     quantity : Integer;
     item     : db.Equipment:ID;
 }
+
+annotate EquipmentService with @(requires: 'movies-support');

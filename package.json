@@ -6,9 +6,10 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "@cap-js/hana": "^1.5.2",
+    "@cap-js/hana": "^1",
     "@sap/cds": "^8",
-    "express": "^4"
+    "express": "^4",
+    "@sap/xssec": "^4"
   },
   "devDependencies": {
     "@cap-js/cds-types": "^0.7.0",
@@ -24,7 +25,34 @@
       "native_hana_associations": false
     },
     "requires": {
+      "[development]": {
+        "auth": {
+          "kind": "mocked",
+          "users": {
+            "movies.support@tester.sap.com": {
+              "password": "initial",
+              "roles": [
+                "movies-support"
+              ]
+            },
+            "alice": {
+              "roles": [
+                "movies-support"
+              ]
+            },
+            "bob": {
+              "roles": [
+                "movies-support"
+              ]
+            }
+          }
+        }
+      },
       "[hybrid]": {
+        "db": "hana"
+      },
+      "[production]": {
+        "auth": "xsuaa",
         "db": "hana"
       }
     }

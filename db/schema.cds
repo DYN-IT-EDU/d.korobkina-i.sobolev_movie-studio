@@ -55,17 +55,17 @@ entity Contracts : cuid, managed {
     details : String;
 }
 
-entity MovieProgress as
+entity MovieProgresses as
     select from Movies
     left join Scenes
         on Movies.ID = Scenes.movie.ID
     {
-        title,
-        Movies.ID,
-        Movies.duration as Projected_Movie_Duration,
-        sum(
-            Scenes.duration
-        )               as Actual_duration
+            title,
+        key Movies.ID,
+            Movies.duration as Projected_Movie_Duration,
+            sum(
+                Scenes.duration
+            )               as Actual_duration : Integer
     }
     where
         Scenes.status = 'finished'
