@@ -8,6 +8,7 @@
   "dependencies": {
     "@cap-js/hana": "^1.5.2",
     "@sap/cds": "^8",
+    "@sap/xssec": "^4.2.7",
     "express": "^4"
   },
   "devDependencies": {
@@ -26,6 +27,9 @@
     "requires": {
       "[hybrid]": {
         "db": "hana"
+      },
+      "[production]": {
+        "auth": "xsuaa"
       }
     }
   }
