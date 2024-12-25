@@ -18,7 +18,7 @@ GET {{baseUrl}}/movies/calculateTotalExpenses(movieID='35ceb633-50f4-44ed-9af9-d
 ###
 GET {{baseUrl}}/movies/calculateTotalExpenses?movieID=35ceb633-50f4-44ed-9af9-d97b63885f1d
 
-###
+###  movie has expenses & contracts
 GET {{baseUrl}}/movies/calculateTotalExpenses?movieID=433d723c-bb76-4ae6-98a2-b107981686f3
 
 ###

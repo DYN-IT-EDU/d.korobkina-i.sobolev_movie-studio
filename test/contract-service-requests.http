@@ -10,14 +10,11 @@ POST {{baseUrl}}/contracts/addContract
 Content-Type: application/json
 
 {
-    "input" : {
         "movieID": "35ceb633-50f4-44ed-9af9-d97b63885f1d",
         "personID": "e4ac3a6b-5b8e-4f44-b66e-087924f6f7d3",
         "roleID": "b2ecf6a2-1a3c-4e88-8d7c-ef7ea35c0e8b",
         "salary": { "amount": 5000, "currency": "USD" },
         "details": "Main actor contract"
-
-    }
 }
 ###
 POST {{baseUrl}}/contracts/addContract
@@ -44,7 +41,7 @@ POST {{baseUrl}}/contracts/removeContract
 Content-Type: application/json
 
 {
-    "ID": "f16360da-b79f-44a0-a5e8-72dbc9ee65d8"
+    "ID": "06dca4ee-0079-481d-813e-cd4b9ed59752"
 }
 
 ###

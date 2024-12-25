@@ -72,7 +72,7 @@ entity MovieProgresses as
     group by
         Movies.ID,
         title,
-        Movies.duration;
+        Movies.duration; 
 
 
 entity Equipment : cuid, managed {
