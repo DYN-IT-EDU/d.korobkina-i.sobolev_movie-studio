@@ -29,6 +29,7 @@
         "db": "hana"
       },
       "[production]": {
+        "db": "hana",
         "auth": "xsuaa"
       }
     }

@@ -1,5 +1,6 @@
 using sap.capire.moviestudioproject as db from '../db/schema';
 
+// @requires: 'any'
 service ContractsService @(path: '/contracts') {
     entity Contracts as select from db.Contracts;
 
