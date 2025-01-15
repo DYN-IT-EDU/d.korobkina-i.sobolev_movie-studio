@@ -1,7 +1,7 @@
 {
   "name": "movie-studio",
   "version": "1.0.0",
-  "description": "standalone router",
+  "description": "managed router",
   "repository": "<Add your repository here>",
   "license": "UNLICENSED",
   "private": true,

@@ -3,7 +3,7 @@ ID: movie-studio
 version: 1.0.0
 description: "A simple CAP project."
 parameters:
-  appname: movie-studio-standalone
+  appname: movie-studio-managed
   enable-parallel-deployments: true
   deploy_mode: html5-repo
 build-parameters:
@@ -14,26 +14,6 @@ build-parameters:
         - npx cds build --production
         - mkdir -p resources
 modules:
-  - name: movie-studio-router
-    type: approuter.nodejs
-    path: app/router
-    parameters:
-      keep-existing-routes: true
-      disk-quota: 256M
-      memory: 256M
-    requires:
-      - name: srv-api
-        group: destinations
-        properties:
-          #name: srv-api # must be used in xs-app.json as well
-          name: movie-studio-app-srv
-          url: ~{srv-url}
-          strictSSL: false
-          forwardAuthToken: true
-      - name: movie-studio-auth
-      - name: movie-studio-destination
-      - name: movie-studio-html5-runtime
-
   - name: movie-studio-srv
     type: nodejs
     path: gen/srv
@@ -73,9 +53,9 @@ modules:
     build-parameters:
       build-result: resources/
       requires:
-        - artifacts:
-            - HTML5Module-content.zip
-          name: HTML5Module
+        - name: HTML5Module
+          artifacts:
+            - HTML5Module-content.zip          
           target-path: resources/
 
   - name: HTML5Module
@@ -83,7 +63,7 @@ modules:
     path: app/HTML5Module
     build-parameters:
       builder: custom
-      commands:
+      commands:        
         - npm run build
       supported-platforms: []
       build-result: .
@@ -105,7 +85,7 @@ modules:
         parameters:
           content-target: true
     build-parameters:
-      no-source: true
+     no-source: true
     parameters:
       content:
         instance:
@@ -114,12 +94,13 @@ modules:
             - Name: movie-studio-html5-repository
               ServiceInstanceName: movie-studio-html5-repo-host
               ServiceKeyName: movie-studio-html5-repo-host-key
-              sap.cloud.service: moviestudio.service
+              sap.cloud.service: basic.service
             - Name: movie-studio-auth
               Authentication: OAuth2UserTokenExchange
               ServiceInstanceName: movie-studio-auth
               ServiceKeyName: movie-studio-auth-key
-              sap.cloud.service: moviestudio.service
+              sap.cloud.service: basic.service          
+          
 resources:
   - name: movie-studio-db
     type: com.sap.xs.hdi-container
@@ -145,18 +126,25 @@ resources:
         init_data:
           instance:
             existing_destinations_policy: update
-            destinations:              
+            destinations:
+              - Name: movie-studio-app-srv
+                URL: ~{srv-api/srv-url}
+                Authentication: NoAuthentication
+                Type: HTTP
+                ProxyType: Internet
+                HTML5.ForwardAuthToken: true
+                HTML5.DynamicDestination: true              
               - Name: ui5
                 URL: https://ui5.sap.com
                 Authentication: NoAuthentication
                 Type: HTTP
-                ProxyType: Internet
+                ProxyType: Internet        
     requires:
       - name: srv-api
         group: destinations
         properties:
-          #name: srv-api # must be used in xs-app.json as well
-          name: movie-studio-app-srv
+          name: srv-api # must be used in xs-app.json as well
+          #name: movie-studio-app-srv
           url: ~{srv-url}
           forwardAuthToken: true
 
@@ -165,8 +153,4 @@ resources:
     parameters:
       service: html5-apps-repo
       service-plan: app-host
-  - name: movie-studio-html5-runtime
-    type: org.cloudfoundry.managed-service
-    parameters:
-      service: html5-apps-repo
-      service-plan: app-runtime
+  

@@ -1,21 +1,22 @@
 <html>
 <header>
-    <title>Welcome</title>
-    <meta charset="UTF-8">
+    <title>This is title</title>
 </header>
 
 <script>
     setTimeout(() => {
-        fetch("/user-api/currentUser").then((res) => {
+        let myPath = window.location.pathname
+        let myPathWithoutFile = myPath.substring(0, myPath.lastIndexOf('/'))
+        fetch(myPathWithoutFile + "/user-api/currentUser").then((res) => {
             return res.json();
         }).then((user) => {
-            document.getElementsByTagName("body")[0].innerText = `Hi ${user.firstname} 👋`
+            document.getElementsByTagName("body")[0].innerText = `Hi ${user.firstname}!`
         });
     }, 1000);
 </script>
 
 <body>
-    Hi there 👋
+    Hello World
 </body>
 
 </html>

@@ -1,5 +1,5 @@
 {
-  "xsappname": "movie-studio_app_repo_router",
+  "xsappname": "movie-studio_managed_sec",
   "tenant-mode": "dedicated",
   "description": "Security profile of called application",
   "scopes": [
