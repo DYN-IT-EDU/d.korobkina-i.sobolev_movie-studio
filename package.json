@@ -1,13 +1,14 @@
 {
   "name": "movie-studio",
   "version": "1.0.0",
-  "description": "A simple CAP project.",
+  "description": "standalone router",
   "repository": "<Add your repository here>",
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
     "@cap-js/hana": "^1",
     "@sap/cds": "^8",
+    "@sap/xssec": "^4",
     "express": "^4"
   },
   "devDependencies": {
@@ -29,9 +30,10 @@
         "db": "hana"
       },
       "[production]": {
-        "db": "hana",
-        "auth": "mocked"
+         "db": "hana",
+        "auth": "xsuaa"
       }
+     
     }
   }
 }
