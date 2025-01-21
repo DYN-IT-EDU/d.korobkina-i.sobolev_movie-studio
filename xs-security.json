@@ -6,8 +6,21 @@
     {
       "name": "uaa.user",
       "description": "UAA"
+    },
+    {
+      "name": "$XSAPPNAME.ContractManager",
+      "description": "ContractManager"
+    },
+    {
+      "name": "$XSAPPNAME.EquipmentManager",
+      "description": "EquipmentManager"
+    },
+    {
+      "name": "$XSAPPNAME.MovieManager",
+      "description": "MovieManager"
     }
   ],
+  "attributes": [],
   "role-templates": [
     {
       "name": "Token_Exchange",
@@ -15,11 +28,40 @@
       "scope-references": [
         "uaa.user"
       ]
+    },
+    {
+      "name": "ContractManager",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.ContractManager"
+      ],
+      "attribute-references": []
+    },
+    {
+      "name": "EquipmentManager",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.EquipmentManager"
+      ],
+      "attribute-references": []
+    },
+    {
+      "name": "MovieManager",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.MovieManager"
+      ],
+      "attribute-references": []
     }
-  ],
+  ], 
   "oauth2-configuration": {
+    "credential-types": [
+      "binding-secret",
+      "x509"
+  ],
     "redirect-uris": [
       "https://*.hana.ondemand.com/**"
     ]
   }
+
 }

@@ -1,7 +1,7 @@
 using sap.capire.moviestudioproject as db from '../db/schema';
 
 service EquipmentService @(path: '/equipment') {
-    @readonly
+
     entity Equipment                            as projection on db.Equipment;
 
     entity EquipmentOrders                      as
@@ -25,14 +25,21 @@ service EquipmentService @(path: '/equipment') {
     function showLowStock()                                               returns array of Equipment;
     action   CloseOrder(order : db.EquipmentOrders:ID)                    returns String;
 
+
     action   OrderEquipment(items : array of items, scene : db.Scenes:ID) returns {
         quantity : db.Equipment:quantity
     };
 }
 
+annotate EquipmentService with @(requires: 'EquipmentManager');
+
+annotate EquipmentService.Equipment with @(restrict: [{
+    grant: ['READ'],
+    to   : 'EquipmentManager'
+}], );
+
+
 type items : {
     quantity : Integer;
     item     : db.Equipment:ID;
 }
-
-//annotate EquipmentService with @(requires: 'any');

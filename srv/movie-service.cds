@@ -23,3 +23,5 @@ service MoviesService @(path: '/movies') {
             MovieProgresses.ID = :movieID;
 
 }
+
+annotate MoviesService with @(requires: 'MovieManager');

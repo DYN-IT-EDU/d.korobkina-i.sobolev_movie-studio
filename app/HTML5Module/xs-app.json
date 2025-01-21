@@ -1,6 +1,10 @@
 {
     "welcomeFile": "/index.html",
     "authenticationMethod": "route",
+    "logout": {
+    "logoutEndpoint": "/app-logout",
+    "logoutPage": "/"
+},
     "routes": [
       {
         "source": "/user-api/currentUser$",
@@ -11,7 +15,7 @@
         "source": "^/equipment/(.*)$",
         "target": "/equipment/$1",
         "destination": "movie-studio-app-srv",
-        "authenticationType": "xsuaa",
+        "authenticationType": "xsuaa",        
         "csrfProtection": true
       },
       {
