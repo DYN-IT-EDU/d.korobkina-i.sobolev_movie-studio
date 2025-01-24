@@ -9,6 +9,24 @@
       "authenticationType": "xsuaa"
     },
     {
+      "source": "/contracts(.*)",
+      "target": "/contracts/$1",
+      "destination": "movie-studio-backend",
+      "authenticationType": "xsuaa"
+    },
+    {
+      "source": "/equipment(.*)",
+      "target": "/equipment/$1",
+      "destination": "movie-studio-backend",
+      "authenticationType": "xsuaa"
+    },
+    {
+      "source": "/scenes(.*)",
+      "target": "/scenes/$1",
+      "destination": "movie-studio-backend",
+      "authenticationType": "xsuaa"
+    },
+    {
       "source": "/user-api/currentUser$",
       "target": "/currentUser",
       "service": "sap-approuter-userapi",
