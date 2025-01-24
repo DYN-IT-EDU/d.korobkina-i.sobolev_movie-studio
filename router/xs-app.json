@@ -1,0 +1,23 @@
+{
+  "welcomeFile": "/index.html",
+  "authenticationMethod": "route",
+  "routes": [
+    {
+      "source": "/movies(.*)",
+      "target": "/movies/$1",
+      "destination": "movie-studio-backend",
+      "authenticationType": "xsuaa"
+    },
+    {
+      "source": "/user-api/currentUser$",
+      "target": "/currentUser",
+      "service": "sap-approuter-userapi",
+      "authenticationType": "xsuaa"
+    },
+    {
+      "source": "(.*)",
+      "target": "/helloworldapprouter/$1",
+      "service": "html5-apps-repo-rt"
+    }
+  ]
+}

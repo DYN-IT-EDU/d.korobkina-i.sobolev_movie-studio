@@ -1,5 +1,26 @@
 {
-  "scopes": [],
-  "attributes": [],
-  "role-templates": []
+  "xsappname": "movie_studio_app",
+  "tenant-mode": "dedicated",
+  "description": "Security profile of called application",
+  "oauth2-configuration": {
+    "redirect-uris": [
+      "https://11be46f5trial-dev-movie-studio-approuter.cfapps.us10-001.hana.ondemand.com/**",
+      "https://11be46f5trial-dev-movie-studio-srv.cfapps.us10-001.hana.ondemand.com/**"
+    ]
+  },
+  "scopes": [
+    {
+      "name": "uaa.user",
+      "description": "UAA"
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "Token_Exchange",
+      "description": "UAA",
+      "scope-references": [
+        "uaa.user"
+      ]
+    }
+  ]
 }

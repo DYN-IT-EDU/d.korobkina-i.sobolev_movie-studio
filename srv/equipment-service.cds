@@ -16,10 +16,10 @@ service EquipmentService @(path: '/equipment') {
     entity EquipmentOrderItem                   as projection on db.EquipmentOrderItem;
     entity MovieProgresses                        as projection on db.MovieProgresses;
 
-    entity MoviesViewWithParameter(p1 : String) as
-        select from db.Movies
-        where
-            ID = :p1;
+    // entity MoviesViewWithParameter(p1 : String) as
+    //     select from db.Movies
+    //     where
+    //         ID = :p1;
 
     function sleep()                                                      returns Boolean;
     function showLowStock()                                               returns array of Equipment;

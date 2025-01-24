@@ -10,9 +10,9 @@ service MoviesService @(path: '/movies') {
 
     function sleep() returns Boolean;
 
-    // view with parameter
-    entity MovieProgress (movieID : UUID) as
-        select from db.MovieProgresses
-        where MovieProgresses.ID = :movieID;
+    // // view with parameter
+    // entity MovieProgress (movieID : UUID) as
+    //     select from db.MovieProgresses
+    //     where MovieProgresses.ID = :movieID;
 
 }

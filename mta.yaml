@@ -1,7 +1,7 @@
 _schema-version: 3.3.0
 ID: movie-studio
 version: 1.0.0
-description: "A simple CAP project."
+description: "A simple CAP project with integrated AppRouter and HTML5 application."
 parameters:
   enable-parallel-deployments: true
 build-parameters:
@@ -10,7 +10,9 @@ build-parameters:
       commands:
         - npm ci
         - npx cds build --production
+
 modules:
+  # CAP Service
   - name: movie-studio-srv
     type: nodejs
     path: gen/srv
@@ -21,13 +23,14 @@ modules:
     build-parameters:
       builder: npm
     provides:
-      - name: srv-api # required by consumers of CAP services (e.g. approuter)
+      - name: srv-api
         properties:
           srv-url: ${default-url}
     requires:
       - name: movie-studio-db
       - name: movie-studio-auth
 
+  # Database Deployer
   - name: movie-studio-db-deployer
     type: hdb
     path: gen/db
@@ -36,12 +39,58 @@ modules:
     requires:
       - name: movie-studio-db
 
+  # AppRouter
+  - name: movie-studio-approuter
+    type: approuter.nodejs
+    path: router
+    parameters:
+      disk-quota: 256M
+      memory: 256M
+    requires:
+      - name: html5_repo_runtime
+      - name: html5_destination
+      - name: movie-studio-auth
+      - name: srv-api
+        group: destinations
+        properties:
+          url: ~{srv-url}
+          forwardAuthToken: true
+          name: movie-studio-backend
+
+  # HTML5 Application
+  - name: html5_deployer
+    type: com.sap.application.content
+    path: .
+    requires:
+      - name: html5_repo_host
+        parameters:
+          content-target: true
+    build-parameters:
+      build-result: resources
+      requires:
+        - artifacts:
+            - HTML5Module-content.zip
+          name: HTML5Module
+          target-path: resources/
+
+  - name: HTML5Module
+    type: html5
+    path: HTML5Module
+    build-parameters:
+      builder: custom
+      commands:
+        - npm run build
+      supported-platforms: []
+
 resources:
+  # Database
   - name: movie-studio-db
     type: com.sap.xs.hdi-container
     parameters:
       service: hana
       service-plan: hdi-shared
+
+  # XSUAA for authentication
   - name: movie-studio-auth
     type: org.cloudfoundry.managed-service
     parameters:
@@ -51,3 +100,26 @@ resources:
       config:
         xsappname: movie-studio-${org}-${space}
         tenant-mode: dedicated
+
+  # HTML5 Repo Host
+  - name: html5_repo_host
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-host
+
+  # HTML5 Repo Runtime
+  - name: html5_repo_runtime
+    parameters:
+      service-plan: app-runtime
+      service: html5-apps-repo
+    type: org.cloudfoundry.managed-service
+
+  # Destination Service
+  - name: html5_destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service-plan: lite
+      service: destination
+      resources:
+
