@@ -31,11 +31,6 @@
       "target": "/currentUser",
       "service": "sap-approuter-userapi",
       "authenticationType": "xsuaa"
-    },
-    {
-      "source": "(.*)",
-      "target": "/helloworldapprouter/$1",
-      "service": "html5-apps-repo-rt"
     }
   ]
 }

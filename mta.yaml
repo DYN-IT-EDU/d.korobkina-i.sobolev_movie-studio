@@ -31,13 +31,13 @@ modules:
       - name: movie-studio-auth
 
   # Database Deployer
-  - name: movie-studio-db-deployer
-    type: hdb
-    path: gen/db
-    parameters:
-      buildpack: nodejs_buildpack
-    requires:
-      - name: movie-studio-db
+  # - name: movie-studio-db-deployer
+  #   type: hdb
+  #   path: gen/db
+  #   parameters:
+  #     buildpack: nodejs_buildpack
+  #   requires:
+  #     - name: movie-studio-db
 
   # AppRouter
   - name: movie-studio-approuter
@@ -47,8 +47,8 @@ modules:
       disk-quota: 256M
       memory: 256M
     requires:
-      - name: html5_repo_runtime
-      - name: html5_destination
+      # - name: html5_repo_runtime
+      # - name: html5_destination
       - name: movie-studio-auth
       - name: srv-api
         group: destinations
@@ -58,29 +58,29 @@ modules:
           name: movie-studio-backend
 
   # HTML5 Application
-  - name: html5_deployer
-    type: com.sap.application.content
-    path: .
-    requires:
-      - name: html5_repo_host
-        parameters:
-          content-target: true
-    build-parameters:
-      build-result: resources
-      requires:
-        - artifacts:
-            - HTML5Module-content.zip
-          name: HTML5Module
-          target-path: resources/
+  # - name: html5_deployer
+  #   type: com.sap.application.content
+  #   path: .
+  #   requires:
+  #     - name: html5_repo_host
+  #       parameters:
+  #         content-target: true
+  #   build-parameters:
+  #     build-result: resources
+  #     requires:
+  #       - artifacts:
+  #           - HTML5Module-content.zip
+  #         name: HTML5Module
+  #         target-path: resources/
 
-  - name: HTML5Module
-    type: html5
-    path: HTML5Module
-    build-parameters:
-      builder: custom
-      commands:
-        - npm run build
-      supported-platforms: []
+  # - name: HTML5Module
+  #   type: html5
+  #   path: HTML5Module
+  #   build-parameters:
+  #     builder: custom
+  #     commands:
+  #       - npm run build
+  #     supported-platforms: []
 
 resources:
   # Database
@@ -102,24 +102,24 @@ resources:
         tenant-mode: dedicated
 
   # HTML5 Repo Host
-  - name: html5_repo_host
-    type: org.cloudfoundry.managed-service
-    parameters:
-      service: html5-apps-repo
-      service-plan: app-host
+  # - name: html5_repo_host
+  #   type: org.cloudfoundry.managed-service
+  #   parameters:
+  #     service: html5-apps-repo
+  #     service-plan: app-host
 
   # HTML5 Repo Runtime
-  - name: html5_repo_runtime
-    parameters:
-      service-plan: app-runtime
-      service: html5-apps-repo
-    type: org.cloudfoundry.managed-service
+  # - name: html5_repo_runtime
+  #   parameters:
+  #     service-plan: app-runtime
+  #     service: html5-apps-repo
+  #   type: org.cloudfoundry.managed-service
 
   # Destination Service
-  - name: html5_destination
-    type: org.cloudfoundry.managed-service
-    parameters:
-      service-plan: lite
-      service: destination
-      resources:
+  # - name: html5_destination
+  #   type: org.cloudfoundry.managed-service
+  #   parameters:
+  #     service-plan: lite
+  #     service: destination
+  #     resources:
 
