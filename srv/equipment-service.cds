@@ -1,9 +1,13 @@
 using sap.capire.moviestudioproject as db from '../db/schema';
 
+@requires: 'authenticated-user'
 service EquipmentService @(path: '/equipment') {
     @readonly
     entity Equipment                            as projection on db.Equipment;
 
+    @restrict: [
+    { grant: 'READ', to: ['WarehouseStaff'] }
+    ]
     entity EquipmentOrders                      as
         select from db.EquipmentOrders {
             ID,
@@ -23,9 +27,11 @@ service EquipmentService @(path: '/equipment') {
 
     function sleep()                                                      returns Boolean;
     function showLowStock()                                               returns array of Equipment;
+    @requires: 'StaffMember'
     action   CloseOrder(order : db.EquipmentOrders:ID)                    returns String;
 
-    action   OrderEquipment(items : array of items, scene : db.Scenes:ID) returns {
+    @requires: 'StaffMember'
+    action OrderEquipment(items : array of items, scene : db.Scenes:ID) returns {
         quantity : db.Equipment:quantity
     };
 }

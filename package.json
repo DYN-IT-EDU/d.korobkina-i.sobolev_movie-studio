@@ -18,7 +18,8 @@
     "prettier": "^3.4.2"
   },
   "scripts": {
-    "start": "cds-serve"
+    "start": "cds-serve",
+    "try": "cf deploy .\\mta_archives\\movie-studio_1.0.0.mtar"
   },
   "cds": {
     "sql": {

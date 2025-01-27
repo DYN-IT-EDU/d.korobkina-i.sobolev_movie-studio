@@ -1,7 +1,8 @@
 using sap.capire.moviestudioproject as db from '../db/schema';
 
-// @requires: 'any'
+@requires: 'authenticated-user'
 service ContractsService @(path: '/contracts') {
+    @requires: 'ContractsViewer'
     entity Contracts as select from db.Contracts;
 
     type MonetaryValue {
@@ -9,6 +10,7 @@ service ContractsService @(path: '/contracts') {
     currency: String(3);
     }
 
+    @requires: 'ContractsManager'
     action addContract(
     movieID: UUID, 
     personID: UUID @mandatory,
@@ -17,7 +19,7 @@ service ContractsService @(path: '/contracts') {
     details: String
     ) returns String;
 
-
+    @requires: 'ContractsManager'
     action removeContract(ID: UUID) returns {
         success: Boolean;
         message: String;

@@ -1,0 +1,42 @@
+{
+  "welcomeFile": "/index.html",
+  "authenticationMethod": "route",
+  "routes": [
+    {
+      "source": "/movies(.*)",
+      "target": "/movies/$1",
+      "destination": "movie-studio-backend",
+      "authenticationType": "xsuaa"
+    },
+    {
+      "source": "/contracts(.*)",
+      "target": "/contracts/$1",
+      "destination": "movie-studio-backend",
+      "authenticationType": "xsuaa"
+    },
+    {
+      "source": "/equipment(.*)",
+      "target": "/equipment/$1",
+      "destination": "movie-studio-backend",
+      "authenticationType": "xsuaa"
+    },
+    {
+      "source": "/scenes(.*)",
+      "target": "/scenes/$1",
+      "destination": "movie-studio-backend",
+      "authenticationType": "xsuaa"
+    },
+    {
+      "source": "/user-api/currentUser$",
+      "target": "/currentUser",
+      "service": "sap-approuter-userapi"
+    },
+    
+    {
+      "source": "^(.*)$",
+      "target": "$1",
+      "service": "html5-apps-repo-rt",
+      "authenticationType": "xsuaa"
+    }
+  ]
+}
