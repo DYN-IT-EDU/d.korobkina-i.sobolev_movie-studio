@@ -21,12 +21,38 @@ modules:
     build-parameters:
       builder: npm
     provides:
-      - name: srv-api # required by consumers of CAP services (e.g. approuter)
+      - name: srv-api
         properties:
-          srv-url: ${default-url}
+          srv-url: ${default-url} # Exposes the service URL for use in destinations
     requires:
       - name: movie-studio-db
       - name: movie-studio-auth
+
+  - name: hello-world-destination-content
+    type: com.sap.application.content
+    requires:
+      - name: movie-studio-auth
+      - name: hello-world_html_repo_host
+      - name: movie-studio-srv
+      - name: movie-studio-srv-destination
+        parameters:
+          content-target: true
+    parameters:
+      content:
+        instance:
+          destinations:
+            - Name: my_service_hello_world_html_repo_host
+              ServiceInstanceName: hello-world_html_repo_host
+              ServiceKeyName: hello-world_html_repo_host-key
+              sap.cloud.service: basic.service
+            - Name: my_service_uaa_hello_world
+              ServiceInstanceName: movie-studio-auth
+              ServiceKeyName: movie-studio-auth-key
+              sap.cloud.service: basic.service
+              Authentication: OAuth2UserTokenExchange
+          existing_destinations_policy: update
+    build-parameters:
+      no-source: true
 
   - name: movie-studio-db-deployer
     type: hdb
@@ -36,62 +62,29 @@ modules:
     requires:
       - name: movie-studio-db
 
-  - name: movie-studio-app-deployer
+  - name: hello-world_ui_deployer
     type: com.sap.application.content
     path: .
     requires:
-      - name: movie-studio-html5-repo-host
+      - name: hello-world_html_repo_host
         parameters:
           content-target: true
     build-parameters:
-      build-result: resources/
+      build-result: resources
       requires:
-        - name: HTML5Module
-          artifacts:
-            - HTML5Module-content.zip          
+        - artifacts:
+            - HTML5Module-content.zip
+          name: HTML5Module
           target-path: resources/
 
   - name: HTML5Module
     type: html5
-    path: app/HTML5Module
+    path: HTML5Module
     build-parameters:
       builder: custom
-      commands:        
+      commands:
         - npm run build
       supported-platforms: []
-      build-result: .
-
-  - name: movie-studio-destinations
-    type: com.sap.application.content
-    requires:
-      - name: movie-studio-auth
-        parameters:
-          service-key:
-            name: movie-studio-auth-key
-      - name: movie-studio-html5-repo-host
-        parameters:
-          service-key:
-            name: movie-studio-html5-repo-host-key
-      - name: srv-api
-      - name: movie-studio-destination
-        parameters:
-          content-target: true
-    build-parameters:
-     no-source: true
-    parameters:
-      content:
-        instance:
-          existing_destinations_policy: update
-          destinations:
-            - Name: movie-studio-html5-repository
-              ServiceInstanceName: movie-studio-html5-repo-host
-              ServiceKeyName: movie-studio-html5-repo-host-key
-              sap.cloud.service: basic.service
-            - Name: movie-studio-auth
-              Authentication: OAuth2UserTokenExchange
-              ServiceInstanceName: movie-studio-auth
-              ServiceKeyName: movie-studio-auth-key
-              sap.cloud.service: basic.service 
 
 resources:
   - name: movie-studio-db
@@ -99,7 +92,7 @@ resources:
     parameters:
       service: hana
       service-plan: hdi-shared
-  
+
   - name: movie-studio-auth
     type: org.cloudfoundry.managed-service
     parameters:
@@ -110,39 +103,33 @@ resources:
         xsappname: movie-studio-${org}-${space}
         tenant-mode: dedicated
 
-  - name: movie-studio-destination
+  - name: movie-studio-srv-destination
     type: org.cloudfoundry.managed-service
     parameters:
       service: destination
+      service-name: movie-studio-srv-destination
       service-plan: lite
       config:
         HTML5Runtime_enabled: true
         init_data:
           instance:
-            existing_destinations_policy: update
             destinations:
               - Name: movie-studio-backend
-                URL: ~{srv-api/srv-url}
-                Authentication: NoAuthentication
                 Type: HTTP
+                URL: ~{srv-api/srv-url} # Use the tilde (~) to reference the provided property
                 ProxyType: Internet
-                HTML5.ForwardAuthToken: true
-                HTML5.DynamicDestination: true              
-              - Name: ui5
-                URL: https://ui5.sap.com
                 Authentication: NoAuthentication
-                Type: HTTP
-                ProxyType: Internet        
+                HTML5.ForwardAuthToken: true
+            existing_destinations_policy: ignore
+        version: 1.0.0
     requires:
-      - name: srv-api
+      - name: srv-api # Explicitly link to the provides property of movie-studio-srv
         group: destinations
-        properties:
-          name: srv-api 
-          url: ~{srv-url}
-          forwardAuthToken: true
 
-  - name: movie-studio-html5-repo-host
+  - name: hello-world_html_repo_host
     type: org.cloudfoundry.managed-service
     parameters:
       service: html5-apps-repo
-      service-plan: app-host 
+      service-plan: app-host
+      service-keys: 
+        - name: hello-world_html_repo_host-key
