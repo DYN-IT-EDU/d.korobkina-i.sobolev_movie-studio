@@ -1,4 +1,5 @@
 const cds = require("@sap/cds");
+const { c } = require("@sap/cds/lib/utils/tar");
 const LOG = cds.log("equipment-service");
 class EquipmentService extends cds.ApplicationService {
   init() {
@@ -34,6 +35,7 @@ class EquipmentService extends cds.ApplicationService {
   async checkStock(data) {
     for (let item of data) {
       if (item.quantity < 20) {
+        item.criticality = 1;
         item.name += " --- LESS THAN 20 -> ORDER MORE EQUIPMENT! ---";
       }
     }

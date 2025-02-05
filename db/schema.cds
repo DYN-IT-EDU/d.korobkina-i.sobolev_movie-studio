@@ -17,7 +17,7 @@ entity People : cuid, managed {
 
 }
 
-
+@odata.draft.enabled
 entity Movies : cuid, managed {
     title       : String(255);
     releaseDate : Date;
@@ -28,13 +28,17 @@ entity Movies : cuid, managed {
                       on scenes.movie = $self;
     genres      : Association to many MovieGenres
                       on genres.movie = $self;
+
+    criticality : Integer;
+    movieStatus : Association to MovieStatusList;
 }
+
 
 entity Scenes : cuid, managed {
     movie       : Association to Movies;
     description : String;
     duration    : Integer;
-    location    : SceneLocations;
+    // location    : SceneLocations;
     status      : SceneStatuses  @mandatory  @assert.range;
     expenses    : Composition of many Expenses
                       on expenses.scene = $self;
@@ -72,7 +76,7 @@ entity MovieProgresses as
     group by
         Movies.ID,
         title,
-        Movies.duration; 
+        Movies.duration;
 
 
 entity Equipment : cuid, managed {
@@ -114,16 +118,28 @@ entity MovieGenres : cuid, managed {
 
 }
 
+entity MovieStatusList : CodeList {
+    key code : String enum {
+            Production = 'P';
+            Released   = 'R';
+            Canceled   = 'C';
+        } default 'P';
+
+};
+
 /*entity SceneStatuses : CodeList {
     key ID : Integer
 }**/
 type SceneStatuses  : String enum {
-
     in_progress;
     finished;
     rejected;
+}
 
-
+type MovieStatuses  : String enum {
+    Production;
+    Released;
+    Cancelled;
 }
 
 entity OrderStatuses : CodeList {
@@ -154,3 +170,27 @@ type MonetaryValue {
 }
 
 type SceneLocations : many SceneLocation;
+
+annotate Movies with {
+    movieStatus @(Common: {
+
+        Text                    : movieStatus.name,
+        TextArrangement         : #TextOnly,
+        ValueListWithFixedValues: true,
+        ValueList               : {
+            $Type         : 'Common.ValueListType',
+            CollectionPath: 'MovieStatusList',
+            Parameters    : [
+                {
+                    $Type            : 'Common.ValueListParameterOut',
+                    LocalDataProperty: movieStatus_code,
+                    ValueListProperty: 'code',
+                },
+                {
+                    $Type            : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty: 'name',
+                },
+            ]
+        }
+    })
+};

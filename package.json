@@ -18,23 +18,33 @@
     "prettier": "^3.4.2"
   },
   "scripts": {
-    "start": "cds-serve"
+    "start": "cds-serve",
+    "watch-movies": "cds watch --open movies/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "cds": {
     "sql": {
       "native_hana_associations": false
     },
     "requires": {
-      "[development]": {},
+      "[development]": {
+        "auth": "dummy",
+        "kind": "sqlite",
+        "credentials": {
+          "url": ":memory:"
+        }
+
+      },
       "[hybrid]": {
         "db": "hana",
         "auth": "xsuaa"
       },
       "[production]": {
-         "db": "hana",
+        "db": "hana",
         "auth": "xsuaa"
       }
-     
     }
-  }
+  },
+  "sapux": [
+    "app/movies"
+  ]
 }

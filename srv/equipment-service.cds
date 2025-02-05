@@ -2,9 +2,9 @@ using sap.capire.moviestudioproject as db from '../db/schema';
 
 service EquipmentService @(path: '/equipment') {
 
-    entity Equipment                            as projection on db.Equipment;
+    entity Equipment          as projection on db.Equipment;
 
-    entity EquipmentOrders                      as
+    entity EquipmentOrders    as
         select from db.EquipmentOrders {
             ID,
             scene,
@@ -13,13 +13,13 @@ service EquipmentService @(path: '/equipment') {
             items
         };
 
-    entity EquipmentOrderItem                   as projection on db.EquipmentOrderItem;
-    entity MovieProgresses                      as projection on db.MovieProgresses;
+    entity EquipmentOrderItem as projection on db.EquipmentOrderItem;
+    entity MovieProgresses    as projection on db.MovieProgresses;
 
-    entity MoviesViewWithParameter(p1 : String) as
+    /*entity MoviesViewWithParameter(p1 : String) as
         select from db.Movies
         where
-            ID = :p1;
+            ID = :p1;*/
 
     function sleep()                                                      returns Boolean;
     function showLowStock()                                               returns array of Equipment;
