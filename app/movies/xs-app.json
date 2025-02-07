@@ -1,16 +1,7 @@
 {
     "welcomeFile": "/index.html",
     "authenticationMethod": "route",
-    "logout": {
-    "logoutEndpoint": "/app-logout",
-    "logoutPage": "/"
-},
     "routes": [
-      {
-        "source": "/user-api/currentUser$",
-        "target": "/currentUser",
-        "service": "sap-approuter-userapi"
-      },
       {
         "source": "^/equipment/(.*)$",
         "target": "/equipment/$1",
@@ -47,3 +38,4 @@
       }
     ]
   }
+  

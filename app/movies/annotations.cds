@@ -10,6 +10,12 @@ annotate service.Movies with {
 
 };
 
+annotate service.Movies with @(UI: {Identification: [{
+    $Type : 'UI.DataFieldForAction',
+    Action: 'MoviesService.setReleasedStatus',
+    Label : '{i18n>setReleased}',
+}], });
+
 
 annotate service.Movies with @(UI.HeaderInfo: {
     Title         : {
@@ -23,7 +29,10 @@ annotate service.Movies with @(UI.HeaderInfo: {
     TypeName      : '{i18n>movie}',
     TypeNamePlural: '{i18n>movies}',
     TypeImageUrl  : 'sap-icon://video',
-});
+
+},
+
+);
 
 
 annotate service.Movies with @(UI: {
@@ -56,17 +65,18 @@ annotate service.Movies with @(UI: {
             $Type: 'UI.DataField',
             Value: title
         },
+
         {
             $Type: 'UI.DataField',
             Value: releaseDate
         },
         {
-            $Type      : 'UI.DataField',
-            Value      : movieStatus_code,
-            Label      : '{i18n>movieStatus}',
-            Criticality: criticality,
+            $Type                    : 'UI.DataField',
+            Value                    : movieStatus_code,
+            Label                    : '{i18n>movieStatus}',
+            Criticality              : criticality,
+            CriticalityRepresentation: #WithIcon,
         },
-
 
     ]},
 
@@ -135,5 +145,26 @@ annotate service.Movies with @(UI.LineItem: [
         Criticality: criticality,
 
     },
+    {
+        $Type : 'UI.DataFieldForAction',
+        Action: 'MoviesService.setReleasedStatus',
+        Label : '{i18n>setReleased}',
+    },
 
 ]);
+
+
+annotate service.Movies with actions {
+    setReleasedStatus @(Core.OperationAvailable: {$edmJson: {$Eq: [
+        {$Path: 'in/movieStatus_code'},
+        'P'
+    ]}});
+}
+
+
+/*annotate service.Movies with @(Common.SideEffects: {
+    SourceProperties: ['movieStatus_code'],
+    TargetProperties: ['movieStatus_code'],
+    Так не работает - обновляется только criticality, а сам статус не обновляется
+
+});*/

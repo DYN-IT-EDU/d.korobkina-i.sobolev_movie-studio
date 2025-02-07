@@ -1,11 +1,20 @@
 const cds = require("@sap/cds");
+const { c } = require("@sap/cds/lib/utils/tar");
 const LOG = cds.log("movie-service");
 class MoviesService extends cds.ApplicationService {
   init() {
     const { Movies } = this.entities;
 
     this.on("calculateTotalExpenses", this.returnTotalExpenses);
+
+    this.on("setReleasedStatus", async (req) => {
+      await UPDATE(req.subject).with({ movieStatus_code: "R", criticality: 3 });
+      req.notify("Film Published!");
+      return this.read(req.subject);
+    });
+
     this.after("READ", Movies, this.setCriticality);
+
     this.on("sleep", async () => {
       try {
         let dbQuery = ' Call "sleep"( )';
@@ -35,8 +44,6 @@ class MoviesService extends cds.ApplicationService {
   }
 
   async returnTotalExpenses(req) {
-    console.log("req.data:", req.data);
-
     const { movieID } = req.data;
 
     const { Expenses, Contracts, Scenes } = this.entities;

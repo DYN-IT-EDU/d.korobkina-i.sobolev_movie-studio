@@ -19,7 +19,8 @@
   },
   "scripts": {
     "start": "cds-serve",
-    "watch-movies": "cds watch --open movies/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-movies": "cds watch --open movies/webapp/index.html?sap-ui-xx-viewCache=false",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive"
   },
   "cds": {
     "sql": {

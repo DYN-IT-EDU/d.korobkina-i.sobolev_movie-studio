@@ -40,8 +40,8 @@ entity Scenes : cuid, managed {
     duration    : Integer;
     // location    : SceneLocations;
     status      : SceneStatuses  @mandatory  @assert.range;
-    expenses    : Composition of many Expenses
-                      on expenses.scene = $self;
+/*expenses    : Composition of many Expenses
+                  on expenses.scene = $self;*/
 }
 
 entity SceneActors : cuid, managed {

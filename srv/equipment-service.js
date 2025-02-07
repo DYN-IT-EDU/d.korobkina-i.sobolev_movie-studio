@@ -1,5 +1,4 @@
 const cds = require("@sap/cds");
-const { c } = require("@sap/cds/lib/utils/tar");
 const LOG = cds.log("equipment-service");
 class EquipmentService extends cds.ApplicationService {
   init() {
@@ -115,7 +114,7 @@ class EquipmentService extends cds.ApplicationService {
     const currentOrder = await SELECT.one
       .from(EquipmentOrders)
       .where({ ID: ID });
-    console.log("currentOrder", currentOrder);
+
     if (currentOrder.status_ID === 102) {
       return req.reject("Order is already closed");
     }

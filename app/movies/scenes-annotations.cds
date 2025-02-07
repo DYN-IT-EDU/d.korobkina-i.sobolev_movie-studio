@@ -5,7 +5,6 @@ annotate service.Scenes with {
     description @title: '{i18n>description}';
     duration    @title: '{i18n>duration}';
     status      @title: '{i18n>movieStatus}';
-    expenses    @title: '{i18n>expenses}';
 
 };
 
