@@ -1,40 +1,36 @@
 {
     "welcomeFile": "/index.html",
-    "authenticationMethod": "route",
+    "authenticationMethod": "none",
     "routes": [
       {
         "source": "^/equipment/(.*)$",
         "target": "/equipment/$1",
-        "destination": "movie-studio-app-srv",
-        "authenticationType": "xsuaa",        
-        "csrfProtection": true
+        "destination": "movie-studio-app-srv"
+        
       },
       {
         "source": "^/contracts/(.*)$",
         "target": "/contracts/$1",
-        "destination": "movie-studio-app-srv",
-        "authenticationType": "xsuaa",
-        "csrfProtection": true
+        "destination": "movie-studio-app-srv"
+        
       },
       {
         "source": "^/movies/(.*)$",
         "target": "/movies/$1",
-        "destination": "movie-studio-app-srv",
-        "authenticationType": "xsuaa",
-        "csrfProtection": true
+        "destination": "movie-studio-app-srv"
+        
       },
       {
         "source": "^/scenes/(.*)$",
         "target": "/scenes/$1",
-        "destination": "movie-studio-app-srv",
-        "authenticationType": "xsuaa",
-        "csrfProtection": true
+        "destination": "movie-studio-app-srv"
+        
       },                 
       {
         "source": "^(.*)$",
         "target": "$1",
-        "service": "html5-apps-repo-rt",
-        "authenticationType": "xsuaa"
+        "service": "html5-apps-repo-rt"
+        
       }
     ]
   }
