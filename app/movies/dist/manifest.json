@@ -18,7 +18,7 @@
     },
     "dataSources": {
       "mainService": {
-        "uri": "/movies/",
+        "uri": "movies/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -33,7 +33,7 @@
           "action": "display",
           "title": "Movies",
            "subTitle": "Manage Movies",
-                    "icon": "sap-icon://flight",
+                    "icon": "sap-icon://video",
           "signature": {
             "parameters": {},
             "additionalParameters": "allowed"
