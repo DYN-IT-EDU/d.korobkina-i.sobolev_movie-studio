@@ -30,12 +30,13 @@ entity Movies : cuid, managed {
                       on genres.movie = $self;
 }
 
+@odata.draft.enabled
 entity Scenes : cuid, managed {
     movie       : Association to Movies;
     description : String;
     duration    : Integer;
     location    : SceneLocations;
-    status      : SceneStatuses  @mandatory  @assert.range;
+    status      : SceneStatuses @mandatory  @assert.range;
     expenses    : Composition of many Expenses
                       on expenses.scene = $self;
 }
@@ -117,13 +118,20 @@ entity MovieGenres : cuid, managed {
 /*entity SceneStatuses : CodeList {
     key ID : Integer
 }**/
-type SceneStatuses  : String enum {
+// type SceneStatuses  : String enum {
 
-    in_progress;
-    finished;
-    rejected;
+//     in_progress;
+//     finished;
+//     rejected;
 
 
+// }
+
+type SceneStatuses : Integer enum {
+    NotStarted   = 0;
+    InProgress   = 1;
+    Finished     = 2;
+    Rejected     = 3;
 }
 
 entity OrderStatuses : CodeList {

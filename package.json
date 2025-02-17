@@ -19,7 +19,8 @@
   },
   "scripts": {
     "start": "cds-serve",
-    "try": "cf deploy .\\mta_archives\\movie-studio_1.0.0.mtar"
+    "try": "cf deploy .\\mta_archives\\movie-studio_1.0.0.mtar",
+    "watch-scenes-web": "cds watch --open scenes-web/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "cds": {
     "sql": {
@@ -34,5 +35,8 @@
         "auth": "xsuaa"
       }
     }
-  }
+  },
+  "sapux": [
+    "app/scenes-web"
+  ]
 }
