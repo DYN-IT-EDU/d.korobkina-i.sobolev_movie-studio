@@ -6,7 +6,15 @@ using {
     sap.common.CodeList,
     Country,
     Currency,
+    User,
 } from '@sap/cds/common';
+
+entity Variants : managed {
+    key ID          : UUID;
+    user            : String not null; // ID текущего пользователя
+    entitySet       : String; // К какой таблице относится вариант
+    variantData     : LargeString; // JSON с настройками
+}
 
 entity People : cuid, managed {
     firstName      : String @mandatory;
