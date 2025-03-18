@@ -4,29 +4,17 @@ annotate SceneService.Scenes with {
     description @title : '{i18n>Description}';
     duration @title : '{i18n>Duration}';
     status @title : '{i18n>Status}';
+    ID @title : '{i18n>Sceneid}';
 };
 
 annotate SceneService.Scenes with @(
     UI.Identification : [  
-    //     {
-    //         $Type : 'UI.DataFieldForAction',
-    //         Action: 'SceneService.EntityContainer/createScene',
-    //         Label: 'create',
-    //     },
-            {
+        {
             $Type : 'UI.DataFieldForAction',
-            Action: 'SceneService.calculateScenesExpenses',
-            Label: 'Calculate expenses',
+            Action: 'SceneService.changeStatusToPending',
+            Label: 'Change to pending',
         }
     ],
-
-    // UI.Identification : [
-    //     {
-    //         $Type : 'UI.DataFieldForAction',
-    //         Action: 'SceneService.calculateScenesExpenses',
-    //         Label: 'Calculate expenses',
-    //     }
-    // ],
     UI.HeaderInfo                : {
         TypeName      : 'Scene',
         TypeNamePlural: 'Scenes',
@@ -45,6 +33,10 @@ annotate SceneService.Scenes with @(
             {
                 $Type : 'UI.DataField',
                 Value : movie_ID,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : ID,
             },
             {
                 $Type : 'UI.DataField',
@@ -101,9 +93,6 @@ annotate SceneService.Scenes with @(
     ],
 );
 
-
-
-
 annotate SceneService.Expenses with {
     category    @title: '{i18n>Categoryid}';
     expense     {
@@ -113,11 +102,6 @@ annotate SceneService.Expenses with {
     expenseDate @title: '{i18n>ExpenseDate}';
     description @title: '{i18n>Description}';
 }
-
-// annotate schema.MonetaryValue with {
-//     amount @title : '{i18n>Amount}';
-//     currency @title : '{i18n>Currency}';
-// };
 
 annotate SceneService.Expenses with @(
     UI.LineItem #ExpensesInfo : [
