@@ -1,4 +1,11 @@
 using SceneService from '../../srv/scene-service';
+annotate SceneService.Scenes with {
+    movie @title : '{i18n>Movieid}';
+    description @title : '{i18n>Description}';
+    duration @title : '{i18n>Duration}';
+    status @title : '{i18n>Status}';
+};
+
 annotate SceneService.Scenes with @(
     UI.Identification : [  
     //     {
@@ -37,22 +44,18 @@ annotate SceneService.Scenes with @(
         Data : [
             {
                 $Type : 'UI.DataField',
-                Label : '{i18n>Movieid}',
                 Value : movie_ID,
             },
             {
                 $Type : 'UI.DataField',
-                Label : '{i18n>Description}',
                 Value : description,
             },
             {
                 $Type : 'UI.DataField',
-                Label : '{i18n>Duration}',
                 Value : duration,
             },
             {
                 $Type : 'UI.DataField',
-                Label : '{i18n>Status}',
                 Value : status,
             },
         ],
@@ -60,13 +63,13 @@ annotate SceneService.Scenes with @(
     UI.Facets : [
         {
             $Type : 'UI.ReferenceFacet',
-            Label : 'General Information of scene',
+            Label : '{i18n>SceneInfoFacet}',
             ID : 'SceneInfoFacet',
             Target : '@UI.FieldGroup#SceneInfoGroup',
         },
         {
             $Type : 'UI.ReferenceFacet',
-            Label : 'Expenses Info',
+            Label : '{i18n>ExpensesInfo}',
             ID : 'ExpensesInfo',
             Target : 'expenses/@UI.LineItem#ExpensesInfo',
         },
@@ -97,32 +100,46 @@ annotate SceneService.Scenes with @(
         },
     ],
 );
+
+
+
+
+annotate SceneService.Expenses with {
+    category    @title: '{i18n>Categoryid}';
+    expense     {
+        amount      @title: '{i18n>Amount}';
+        currency    @title: '{i18n>Currency}';
+    };
+    expenseDate @title: '{i18n>ExpenseDate}';
+    description @title: '{i18n>Description}';
+}
+
+// annotate schema.MonetaryValue with {
+//     amount @title : '{i18n>Amount}';
+//     currency @title : '{i18n>Currency}';
+// };
+
 annotate SceneService.Expenses with @(
     UI.LineItem #ExpensesInfo : [
         {
             $Type : 'UI.DataField',
             Value : category_ID,
-            Label : 'category_ID',
         },
         {
             $Type : 'UI.DataField',
             Value : expense_amount,
-            Label : 'expense_amount',
         },
         {
             $Type : 'UI.DataField',
             Value : expense_currency_code,
-            Label : 'expense_currency_code',
         },
         {
             $Type : 'UI.DataField',
             Value : expenseDate,
-            Label : 'expenseDate',
         },
         {
             $Type : 'UI.DataField',
             Value : description,
-            Label : 'description',
         },
     ]
 );
