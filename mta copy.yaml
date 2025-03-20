@@ -1,7 +1,7 @@
 _schema-version: 3.3.0
 ID: movie-studio
-description: A simple CAP project.
-version: 1.0.1
+description: A simple CAP project with integrated AppRouter and HTML5 application.
+version: 1.0.0
 modules:
 - name: movie-studio-srv
   type: nodejs
@@ -28,10 +28,15 @@ modules:
     buildpack: nodejs_buildpack
 - name: movie-studio-approuter
   type: approuter.nodejs
-  path: movie-studio-approuter
+  path: router
   requires:
-  - name: movie-studio_html_repo_runtime
   - name: movie-studio-auth
+  - name: srv-api
+    group: destinations
+    properties:
+      forwardAuthToken: true
+      name: movie-studio-backend
+      url: ~{srv-url}
   - name: movie-studio-srv-destination
     group: destinations
     properties:
@@ -41,11 +46,11 @@ modules:
   parameters:
     disk-quota: 256M
     memory: 256M
-- name: movie-studio_ui_deployer
+- name: movie-studio-app-content
   type: com.sap.application.content
   path: .
   requires:
-  - name: movie-studio_html_repo_host
+  - name: movie-studio-repo-host
     parameters:
       content-target: true
   build-parameters:
@@ -107,15 +112,11 @@ resources:
   requires:
   - name: srv-api
     group: destinations
-- name: movie-studio_html_repo_runtime
+- name: movie-studio-repo-host
   type: org.cloudfoundry.managed-service
   parameters:
     service: html5-apps-repo
-    service-plan: app-runtime
-- name: movie-studio_html_repo_host
-  type: org.cloudfoundry.managed-service
-  parameters:
-    service: html5-apps-repo
+    service-name: movie-studio-html5-service
     service-plan: app-host
 parameters:
   deploy_mode: html5-repo

@@ -17,7 +17,7 @@
         },
         "dataSources": {
             "mainService": {
-                "uri": "/scenes/",
+                "uri": "scenes/",
                 "type": "OData",
                 "settings": {
                     "annotations": [],
