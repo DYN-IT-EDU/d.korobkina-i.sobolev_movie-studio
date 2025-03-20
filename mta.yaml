@@ -33,6 +33,7 @@ modules:
   - name: movie-studio_html_repo_runtime
   - name: movie-studio-auth
   - name: movie-studio-srv-destination
+  - name: ui5-flexibility-keyuser
     group: destinations
     properties:
       forwardAuthToken: false
@@ -117,6 +118,11 @@ resources:
   parameters:
     service: html5-apps-repo
     service-plan: app-host
+- name: ui5-flexibility-keyuser
+  parameters:
+    service-plan: trial
+    service: ui5-flexibility-keyuser
+  type: org.cloudfoundry.managed-service
 parameters:
   deploy_mode: html5-repo
   enable-parallel-deployments: true

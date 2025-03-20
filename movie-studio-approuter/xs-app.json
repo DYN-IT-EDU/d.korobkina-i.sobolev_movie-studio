@@ -26,6 +26,12 @@
       "authenticationType": "xsuaa"
     },
     {
+      "source": "^/keyuser/(.*)$",
+      "target": "$1",
+      "service": "com.sap.ui.flex.cf.keyuser",
+      "endpoint": "keyuser"
+    },
+    {
       "source": "/user-api/currentUser$",
       "target": "/currentUser",
       "service": "sap-approuter-userapi",
