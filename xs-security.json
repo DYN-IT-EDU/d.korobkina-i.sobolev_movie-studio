@@ -6,6 +6,26 @@
     {
       "name": "uaa.user",
       "description": "UAA"
+    },
+    {
+      "name": "$XSAPPNAME.ContractsViewer",
+      "description": "ContractsViewer"
+    },
+    {
+      "name": "$XSAPPNAME.ContractsManager",
+      "description": "ContractsManager"
+    },
+    {
+      "name": "$XSAPPNAME.WarehouseStaff",
+      "description": "WarehouseStaff"
+    },
+    {
+      "name": "$XSAPPNAME.StaffMember",
+      "description": "StaffMember"
+    },
+    {
+      "name": "$XSAPPNAME.ScenesManager",
+      "description": "ScenesManager"
     }
   ],
   "role-templates": [
@@ -19,11 +39,12 @@
   ],
   "oauth2-configuration": {
     "credential-types": [
-        "binding-secret",
-        "x509"
+      "binding-secret",
+      "x509"
     ],
     "redirect-uris": [
-        "https://*.hana.ondemand.com/**"
+      "https://*.hana.ondemand.com/**"
     ]
-}  
+  },
+  "attributes": []
 }
