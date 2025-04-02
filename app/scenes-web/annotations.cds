@@ -95,6 +95,7 @@ annotate SceneService.Scenes with @(
 
 annotate SceneService.Expenses with {
     category    @title: '{i18n>Categoryid}';
+    
     expense     {
         amount      @title: '{i18n>Amount}';
         currency    @title: '{i18n>Currency}';
@@ -102,6 +103,7 @@ annotate SceneService.Expenses with {
     expenseDate @title: '{i18n>ExpenseDate}';
     description @title: '{i18n>Description}';
 }
+
 
 annotate SceneService.Expenses with @(
     UI.LineItem #ExpensesInfo : [

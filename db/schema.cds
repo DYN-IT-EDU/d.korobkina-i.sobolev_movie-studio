@@ -35,7 +35,7 @@ entity Scenes : cuid, managed {
     movie       : Association to Movies;
     description : String;
     duration    : Integer;
-    location    : SceneLocations;
+    location    : SceneLocation;
     status      : SceneStatuses @mandatory  @assert.range;
     expenses    : Composition of many Expenses
                       on expenses.scene = $self;
@@ -161,4 +161,3 @@ type MonetaryValue {
     currency : Currency;
 }
 
-type SceneLocations : many SceneLocation;
