@@ -1,0 +1,121 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "app1",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.17.0",
+      "toolsId": "480912d1-94ca-4e8f-912a-91f3b5053857"
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.134.0",
+      "libs": {
+        "sap.fe.templates": {},
+        "sap.fe.core": {},
+        "sap.ui.fl": {},
+        "sap.f": {},
+        "sap.m": {},
+        "sap.ui.core": {}
+      },
+      "components": {
+        "a2.app2":{
+          "lazy": false
+        },
+        "ns.scenesweb":{
+          "lazy": false
+        }
+      }
+    },
+    "componentUsages": {
+      "app2": {
+        "name": "a2.app2"
+      },
+      "scenesweb":{
+        "name": "ns.scenesweb",
+        "manifest" : true
+      }
+    },
+    "resourceRoots": {
+      "a2.app2": "../a2app2",
+      "ns.scenesweb": "../nsscenesweb"
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "app1.i18n.i18n"
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "app1.view",
+        "async": true,
+        "viewPath": "app1.view"
+      },
+      "routes": [
+        {
+          "name": "RouteApp",
+          "pattern": ":?query:",
+          "target": [
+            "TargetApp"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetApp": {
+          "name": "App1"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "app1.view.App1",
+      "type": "XML",
+      "async": true
+    }
+  }
+}

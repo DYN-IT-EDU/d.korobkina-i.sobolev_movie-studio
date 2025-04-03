@@ -38,5 +38,5 @@
       "authenticationType": "xsuaa"
     }
   ],
-  "welcomeFile": "/nsscenesweb"
+  "welcomeFile": "/app1"
 }

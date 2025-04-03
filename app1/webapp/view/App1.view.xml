@@ -1,0 +1,37 @@
+<mvc:View controllerName="app1.controller.App"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    	<Shell id="shell">
+<App id="app1">
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
+    <content>
+    
+    <Input value="{sharedModel>/greeting}" editable="true" />
+    <GenericTile id="_IDGenGenericTile" header="My tile" subheader="Click" press="onTilePress"></GenericTile>
+      <!-- <VBox id="mySubCompArea"/> -->
+  <VBox id="mySubCompArea" class="sapUiSmallMargin">
+    <core:ComponentContainer
+      id="compContainer"
+      name="a2.app2"
+      height="100%"
+      async="true"
+      propagateModel="true"/>
+  </VBox>
+    <VBox id="myScenesCompArea" class="sapUiSmallMargin">
+    <core:ComponentContainer
+      id="scenesContainer"
+      name="ns.scenesweb"
+      height="100%"
+      async="true"
+      propagateModel="true"/>
+  </VBox>
+    </content>
+    </Page>
+
+</App>
+	</Shell>
+</mvc:View>

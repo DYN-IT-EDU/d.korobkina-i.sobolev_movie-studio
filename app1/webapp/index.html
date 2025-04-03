@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>scenes-web</title>
+    <title>App1 Title</title>
     <style>
         html, body, body > div, #container, #container-uiarea {
             height: 100%;
@@ -12,24 +12,23 @@
     </style>
     <script
         id="sap-ui-bootstrap"
-        src="https://sapui5.hana.ondemand.com/1.132.1/resources/sap-ui-core.js"
+        src="resources/sap-ui-core.js"
         data-sap-ui-theme="sap_horizon"
         data-sap-ui-resourceroots='{
-            "ns.scenesweb": "./"
+            "app1": "./"
         }'
         data-sap-ui-oninit="module:sap/ui/core/ComponentSupport"
         data-sap-ui-compatVersion="edge"
         data-sap-ui-async="true"
         data-sap-ui-frameOptions="trusted"
-        data-sap-ui-flexibilityServices='[{"connector":"BtpServiceConnector", "url": "/keyuser"}]'
     ></script>
 </head>
 <body class="sapUiBody sapUiSizeCompact" id="content">
     <div
         data-sap-ui-component
-        data-name="ns.scenesweb"
-        data-id="scenescontainer"
-        data-settings='{"id" : "ns.scenesweb"}'
+        data-name="app1"
+        data-id="app1container"
+        data-settings='{"id" : "app1"}'
         data-handle-validation="true"
     ></div>
 </body>

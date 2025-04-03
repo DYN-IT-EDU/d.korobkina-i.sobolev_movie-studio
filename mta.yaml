@@ -56,9 +56,23 @@ modules:
       - nsscenesweb.zip
       name: nsscenesweb
       target-path: resources/
+    - artifacts:
+      - app1.zip
+      name: app1
+      target-path: resources/
 - name: nsscenesweb
   type: html5
   path: app/scenes-web
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: app1
+  type: html5
+  path: app1
   build-parameters:
     build-result: dist
     builder: custom
