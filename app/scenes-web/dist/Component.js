@@ -1,2 +1,2 @@
-sap.ui.define(["sap/fe/core/AppComponent","sap/ui/core/UIComponent"],function(e){"use strict";console.log("Scenes component loaded");return e.extend("ns.scenesweb.Component",{metadata:{manifest:"json"},init:function(){e.prototype.init.apply(this,arguments);console.log("ns.scenesweb Component initialized")}})});
+sap.ui.define(["sap/fe/core/AppComponent"],function(e){"use strict";return e.extend("ns.scenesweb.Component",{metadata:{manifest:"json"}})});
 //# sourceMappingURL=Component.js.map
