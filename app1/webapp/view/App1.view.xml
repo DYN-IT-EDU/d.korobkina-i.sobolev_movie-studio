@@ -11,14 +11,14 @@
     <content>
     
     <Input value="{sharedModel>/greeting}" editable="true" />
-    <GenericTile id="_IDGenGenericTile" header="My tile" subheader="Click" press="onTilePress"></GenericTile>
+    <GenericTile id="_IDGenGenericTile" header="My tile" subheader="Go to Second View" press=".onNavToSecond"></GenericTile>
       <!-- <VBox id="mySubCompArea"/> -->
-      <core:ComponentContainer
+      <!-- <core:ComponentContainer
       id="scenesContainer"
       name="ns.scenesweb"
       height="100%"
       async="true"
-      propagateModel="true"/>
+      propagateModel="true"/> -->
     </content>
     </Page>
 

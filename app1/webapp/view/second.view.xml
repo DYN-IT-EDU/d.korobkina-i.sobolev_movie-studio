@@ -1,0 +1,25 @@
+<mvc:View
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core"
+  controllerName="app1.controller.Second"
+  displayBlock="true">
+  
+  <Page title="Second View">
+    <content>
+      <Text text="Welcome to the Second View!"/>
+      <Button 
+        text="Go Back" 
+        press=".onNavBack"
+        class="sapUiSmallMargin"/>
+        <!-- <VBox id="containerBox"/> -->
+    <core:ComponentContainer
+      id="scenesContainer2"
+      name="ns.scenesweb"
+      async="true"
+      propagateModel="true"
+      height="100%"
+      width="100%"/>
+    </content>
+  </Page>
+</mvc:View>

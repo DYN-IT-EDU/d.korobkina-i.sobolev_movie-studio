@@ -7,5 +7,10 @@ sap.ui.define([
     
 
     return Controller.extend("app1.controller.App", {
-      onInit: function () {}});
+      onInit: function () {},
+
+      onNavToSecond: function() {
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("SecondPage");
+    },});
 });

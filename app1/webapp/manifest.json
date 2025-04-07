@@ -45,10 +45,10 @@
         "sap.ui.core": {}
       },
       "components": {
-        "a2.app2":{
+        "a2.app2": {
           "lazy": false
         },
-        "ns.scenesweb":{
+        "ns.scenesweb": {
           "lazy": false
         }
       }
@@ -57,9 +57,9 @@
       "app2": {
         "name": "a2.app2"
       },
-      "scenesweb":{
+      "scenesweb": {
         "name": "ns.scenesweb",
-        "manifest" : true
+        "manifest": true
       }
     },
     "resourceRoots": {
@@ -89,7 +89,7 @@
       "config": {
         "routerClass": "sap.m.routing.Router",
         "controlAggregation": "pages",
-        "controlId": "app",
+        "controlId": "app1",
         "transition": "slide",
         "type": "View",
         "viewType": "XML",
@@ -104,11 +104,21 @@
           "target": [
             "TargetApp"
           ]
+        },
+        {
+          "pattern": "second",
+          "name": "SecondPage",
+          "target": "SecondViewTarget"
         }
       ],
       "targets": {
         "TargetApp": {
           "name": "App1"
+        },
+        "SecondViewTarget": {
+          "viewName": "second",
+          "viewId": "secondView",
+          "controlAggregation": "pages"
         }
       }
     },
@@ -117,5 +127,6 @@
       "type": "XML",
       "async": true
     }
-  }
+  },
+  "sap.fiori": {}
 }
